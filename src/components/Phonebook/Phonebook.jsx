@@ -31,7 +31,13 @@ class Phonebook extends Component {
         }
 
         this.props.addContactNew(item)
+        this.clearField()
     };
+
+    clearField = () => {
+        this.setState({name: '',number: ''})
+    }
+    
     render() {
 
         return (
