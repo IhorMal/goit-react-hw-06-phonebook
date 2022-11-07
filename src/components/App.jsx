@@ -16,19 +16,49 @@ class App extends Component {
     filter: ''
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      const serializedState = JSON.stringify(this.state.contacts);
+      localStorage.setItem('contacts', serializedState);   
+    }
+  }
+  
+  componentDidMount() {
+    const contact = localStorage.getItem('contacts');
+    const contactPars = JSON.parse(contact)
+    console.log(contactPars)
+    
+    // this.setState(prevState => ({
+    //   contacts: [...prevState.contacts, contactPars],
+    // }))
+    if (contactPars) {
+      this.setState({ contacts: contactPars },);
+    }
+    
+  }
+
+  //  const contact = localStorage.getItem('contacts');
+  //   const contactPars = JSON.parse(contact)
+  //   console.log(contactPars)
+  //   if (contactPars) {
+  //     this.setState({ contacts: contactPars });
+  //   }
+  
   onNewContact = e => {
     const {name, value = name.value} = e.target
-    this.setState({[name]: value})
+    this.setState({ [name]: value })
+    this.getSnapshotBeforeUpdate(this.props, this.state)
+    
   };
 
   addContactNew = (item) => {
     this.setState(prevState => ({
-    contacts: [...prevState.contacts, item]
+      contacts: [...prevState.contacts, item],
     }))
   }
   
-  filterContact = (e) => {
-    const {filter, contacts} = this.state;
+  filterContact = () => {
+    const { filter, contacts } = this.state;
     return contacts.filter(item => {
       return item.name.toLowerCase().includes(filter.toLowerCase())
     })
@@ -38,10 +68,11 @@ class App extends Component {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(value => value.id !== id),
     }))
+    
   }
 
   render() {
-    const {contacts, filter} = this.state
+    const { contacts, filter } = this.state;
     return (
       <div className={css.book}>
         <h1>Phonebook</h1>

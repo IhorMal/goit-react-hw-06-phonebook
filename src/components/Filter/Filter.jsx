@@ -1,5 +1,5 @@
-
 import { Component } from 'react'
+
 
 class Filter extends Component {
     render() {
@@ -8,7 +8,7 @@ class Filter extends Component {
         return (
         <div>
             <p>Find contacts by name</p>
-            <input type="text" name="filter" onChange={addFind} />
+            <input type="text" name="filter" value={filter} onChange={addFind} />
             {filter !== '' && (
                 <ul>
                 {filt.map(({ name, id, number }) => (

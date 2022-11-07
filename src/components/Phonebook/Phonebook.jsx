@@ -16,9 +16,9 @@ class Phonebook extends Component {
         e.preventDefault()
 
         const item = {
+            id: nanoid(),
             name: this.state.name,
             number: this.state.number,
-            id: nanoid()
         }
 
         let check = this.props.contacts.find((element) => {
