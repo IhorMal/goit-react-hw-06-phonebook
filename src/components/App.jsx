@@ -47,8 +47,6 @@ class App extends Component {
   onNewContact = e => {
     const {name, value = name.value} = e.target
     this.setState({ [name]: value })
-    this.getSnapshotBeforeUpdate(this.props, this.state)
-    
   };
 
   addContactNew = (item) => {
