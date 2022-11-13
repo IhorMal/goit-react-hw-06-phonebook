@@ -16,6 +16,7 @@ function useContact() {
   const [steyt, setSteyt] = useState(local ?? steytContact);
   return [steyt, setSteyt] 
 }
+
 export const App = () => {
   const [contacts, setContacts] = useContact();
   const [filter, setFilter] = useState('');
