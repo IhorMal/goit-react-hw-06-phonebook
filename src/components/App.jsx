@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef} from 'react'
+import { useState, useEffect} from 'react'
 import { Phonebook } from './Phonebook/Phonebook'
 import {Contact} from './Contact/Contact'
 import { Filter } from './Filter/Filter'
