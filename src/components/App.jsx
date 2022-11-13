@@ -28,7 +28,6 @@ export const App = () => {
 
   function onNewContact(e) {
     const { value } = e.target;
-    console.log(value)
     setFilter(value)
   };
 
