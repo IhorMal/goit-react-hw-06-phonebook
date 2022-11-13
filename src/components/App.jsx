@@ -43,8 +43,6 @@ export const App = () => {
 
   function onDalet(id) {
     let filtet = contacts.filter(value => value.id !== id);
-    console.log(id)
-    console.log(filtet)
     setContacts(filtet)
   }
 
