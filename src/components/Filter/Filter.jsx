@@ -13,7 +13,7 @@ export const Filter = () => {
       return item.name.toLowerCase().includes(newContact.filter.toLowerCase())
     })
   }
-  console.log(filterContact())
+
     return (
     <div>
         <p>Find contacts by name</p>
