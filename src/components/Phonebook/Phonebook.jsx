@@ -1,11 +1,18 @@
 import { useState } from 'react'
-import { nanoid } from 'nanoid'
 import css from './Phonebook.module.css'
+import { createContacts } from "redux/sliceContacts";
+import { useSelector, useDispatch } from "react-redux";
 
-export const Phonebook = ({ contacts, addContactNew }) => {
+
+    
+
+export const Phonebook = () => {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
+    const dispatch = useDispatch()
+    const newContact = useSelector(store => store.contacts)
 
+    
     function onNewContact(e) {
         const { name, value = name.value } = e.target;
         switch (name) {
@@ -28,20 +35,15 @@ export const Phonebook = ({ contacts, addContactNew }) => {
     function createContact(e) {
         e.preventDefault()
 
-        const item = {
-            id: nanoid(),
-            name: name,
-            number: number,
-        }
-        let check = contacts.find((element) => {
-            return element.name.toLowerCase() === item.name.toLowerCase()
+        let check = newContact.find((element) => {
+            return element.name.toLowerCase() === name.toLowerCase()
         })
 
         if (check) {
-            alert(`${item.name} is already in contacts.`)
+            alert(`${name} is already in contacts.`)
             return
         }
-        addContactNew(item)
+        dispatch(createContacts(name,number))
         clearField()
     };
 
