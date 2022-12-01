@@ -1,12 +1,10 @@
-import {useEffect} from 'react'
+
 import { Phonebook } from './Phonebook/Phonebook'
 import {Contact} from './Contact/Contact'
 import { Filter } from './Filter/Filter'
 import css from './App.module.css'
-import { useSelector } from "react-redux";
 
 export const App = () => {
-
 
   return (
       <div className={css.book}>
