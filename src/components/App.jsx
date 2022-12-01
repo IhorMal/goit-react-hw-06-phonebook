@@ -7,11 +7,6 @@ import { useSelector } from "react-redux";
 
 export const App = () => {
 
-  const contacts = useSelector(store => store.contacts)
-  useEffect(() => {
-    const serializedState = JSON.stringify(contacts);
-      window.localStorage.setItem('contacts', serializedState);
-  }, [contacts]);
 
   return (
       <div className={css.book}>

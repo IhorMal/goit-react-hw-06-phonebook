@@ -10,7 +10,7 @@ export const Phonebook = () => {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
     const dispatch = useDispatch()
-    const newContact = useSelector(store => store.contacts)
+    const newContact = useSelector(store => store.contacts.listContacts)
 
     
     function onNewContact(e) {

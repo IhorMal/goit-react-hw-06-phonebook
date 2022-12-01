@@ -5,20 +5,20 @@ import { contactSearch } from "redux/sliceFilter";
 
 export const Filter = () => {
     const dispatch = useDispatch()
-    const newContact = useSelector(store => store)
-
+    const newContact = useSelector(store => store.contacts.listContacts)
+    const filter = useSelector(store => store.filter)
 
   function filterContact() {
-    return newContact.contacts.filter(item => {
-      return item.name.toLowerCase().includes(newContact.filter.toLowerCase())
+    return newContact.filter(item => {
+      return item.name.toLowerCase().includes(filter.toLowerCase())
     })
   }
-  console.log(filterContact())
+
     return (
     <div>
         <p>Find contacts by name</p>
         <input type="text" name="filter"  onChange={(e) => dispatch(contactSearch(e.target.value))} />
-        {newContact.filter !== '' && (
+        {filter !== '' && (
             <ul>
             {filterContact().map(({ name, id, number }) => (
                 <li key={id}>
