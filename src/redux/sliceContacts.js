@@ -32,14 +32,13 @@ initialState: { listContacts: steytContact},
       
       },
       createRemove(state, action) {
-        return {
-          ...state,
-          listContacts: state.listContacts.filter(
+        
+       state.listContacts = state.listContacts.filter(
             contact => contact.id !== action.payload
-          ),
-        };
+          )
+      
       },
-    },
+    }
 });
 
 
