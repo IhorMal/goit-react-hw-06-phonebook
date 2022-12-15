@@ -1,17 +1,10 @@
-import {useEffect} from 'react'
+
 import { Phonebook } from './Phonebook/Phonebook'
 import {Contact} from './Contact/Contact'
 import { Filter } from './Filter/Filter'
 import css from './App.module.css'
-import { useSelector } from "react-redux";
 
 export const App = () => {
-
-  const contacts = useSelector(store => store.contacts)
-  useEffect(() => {
-    const serializedState = JSON.stringify(contacts);
-      window.localStorage.setItem('contacts', serializedState);
-  }, [contacts]);
 
   return (
       <div className={css.book}>
